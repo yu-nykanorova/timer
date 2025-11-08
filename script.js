@@ -65,21 +65,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // counters
 
-    const startCount = document.querySelectorAll(".counter-value");
-    
-    // startCount.forEach((item) => {
-    //     console.log(item.textContent);
-    // })
+    const counter = document.querySelectorAll(".counter-value");
+    const duration = 2500;
 
-    function countUp(startValue, maxValue) {
+    function countUp(startValue, element, maxValue) {
         
-        const interval = setInterval(function () {
+        const interval = setInterval(() => {
             startValue++;
-            startCount.forEach((item) => {
-                console.log(item.textContent = startValue);
-            })
-            if (startValue >= maxValue) clearInterval(interval);
-        }, 500);
+            element.textContent = startValue;
+
+            if (startValue >= maxValue) {
+                clearInterval(interval);
+            }
+        }, duration / (maxValue - startValue) );
     }
+
+    counter.forEach((item) => {
+        console.log(item.dataset.max);
+    });
+
+    counter.forEach((item) => {
+        countUp(item.textContent, item, item.dataset.max);
+    });
     
 });
