@@ -2,6 +2,8 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const deadline = "2026 1 1";
+
+    // timer
     
     function getTimeRemaining(endtime) {
         let days, hours, minutes, seconds;
@@ -28,6 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function addZero(value) {
+        if (value < 10) {
+            return `0${value}`;
+        }
+        return value;
+    }
+
     function setTimeRemaining(selector, endtime) {
         const timer = document.querySelector(selector);
         const days = timer.querySelector("#days");
@@ -41,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
         function updateTime() {
             const t = getTimeRemaining(endtime);
             
-            days.innerHTML = t.days;
-            hours.innerHTML = t.hours;
-            minutes.innerHTML = t.minutes;
-            seconds.innerHTML = t.seconds;
+            days.innerHTML = addZero(t.days);
+            hours.innerHTML = addZero(t.hours);
+            minutes.innerHTML = addZero(t.minutes);
+            seconds.innerHTML = addZero(t.seconds);
 
             if (t.total <= 0) {
                 clearInterval(interval);
@@ -52,7 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    console.log(getTimeRemaining(deadline));
     setTimeRemaining("#timer-container", deadline)
+
+    // counters
+
+    const startCount = document.querySelectorAll(".counter-value");
+    
+    startCount.forEach((item) => {
+        console.log(item.textContent);
+    })
     
 });
