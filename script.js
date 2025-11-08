@@ -67,8 +67,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const startCount = document.querySelectorAll(".counter-value");
     
-    startCount.forEach((item) => {
-        console.log(item.textContent);
-    })
+    // startCount.forEach((item) => {
+    //     console.log(item.textContent);
+    // })
+
+    function countUp(startValue, maxValue) {
+        
+        const interval = setInterval(function () {
+            startValue++;
+            startCount.forEach((item) => {
+                console.log(item.textContent = startValue);
+            })
+            if (startValue >= maxValue) clearInterval(interval);
+        }, 500);
+    }
     
 });
