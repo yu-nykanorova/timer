@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const counter = document.querySelectorAll(".counter-value");
     const duration = 2500;
 
+    console.log(Date.now());
+
     function countUp(startValue, element, maxValue) {
         
         const interval = setInterval(() => {
