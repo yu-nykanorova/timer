@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         countUp(item.textContent, item, item.dataset.max);
     });
 
-    // fetch
+    // fetch for pictures block
     const fetchItems = document.querySelectorAll(".fetch-text");
     console.log(fetchItems);
 
@@ -100,5 +100,47 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => item.textContent = data.title);
     })
     
+    // fetch for weather
+
+    const dateElem = document.getElementById("weather-date");
+    const weatherList = document.getElementById("weather-list");
+
+    async function getWeather() {
+        try {
+          const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,precipitation_probability&forecast_days=1");
+          const data = await response.json();
+          return data; 
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+
+    async function setTemperature() {
+        const weather = await getWeather();
+        console.log(weather);
+        const date = `Weather for today — ${weather.hourly.time[0].slice(0, 10)}`;
+
+        dateElem.textContent = date;
+
+        weather.hourly.time.map((item, index) => {
+            const elem = document.createElement("li");
+            const time = document.createElement("span");
+            time.setAttribute("id", "weather-time");
+            const temper = document.createElement("span");
+            temper.setAttribute("id", "weather-temperature");
+            const precipit = document.createElement("span");
+            precipit.setAttribute("id", "weather-precipitation");
+
+            if (index % 4 === 0) {
+                time.textContent = item.slice(11);
+                temper.textContent = `${weather.hourly.temperature_2m[index].toFixed(0)}°C`;
+                precipit.textContent = `${weather.hourly.precipitation_probability[index]}%`;
+                elem.append(time, temper, precipit);
+                weatherList.append(elem);
+            }
+        }); 
+    }
+
+    setTemperature();
     
 });
