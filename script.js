@@ -87,5 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
     counter.forEach((item) => {
         countUp(item.textContent, item, item.dataset.max);
     });
+
+    // fetch
+    const fetchItems = document.querySelectorAll(".fetch-text");
+    console.log(fetchItems);
+
+    fetchItems.forEach((item, index) => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${index + 1}`)
+            .then(response => response.json())
+            .then(data => item.textContent = data.title);
+    })
+    
     
 });
