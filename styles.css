@@ -1,5 +1,6 @@
 :root {
 	--font-main: "Lato", sans-serif;
+	--font-fancy: "Mrs Saint Delafield", cursive;
 
 	--transition: all .2s ease-in-out;
 
@@ -66,6 +67,34 @@ li {
     transition: var(--transition);
 }
 
+
+#banner-main {
+	width: 100%;
+	padding: 100rem 0;
+	background-image: url(img/main_banner_1920.jpg);
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+}
+
+#banner-main::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+#banner-title {
+	position: relative;
+	font-family: var(--font-fancy);
+	font-size: 116rem;
+	color: var(--grey);
+	z-index: 1;
+}
+
 .container {
 	max-width: 80%;
 	margin: 0 auto;
@@ -74,9 +103,9 @@ li {
 }
 
 h1 {
-    color: var(--dark-green);
+	color: var(--dark-green);
 	margin-bottom: 60rem;
-	font-size: 38rem;
+	font-size: 46rem;
 }
 
 #timer-container,
@@ -92,7 +121,7 @@ h1 {
 }
 
 #timer-container {
-	padding: 20rem;
+	padding: 50rem;
 	justify-content: space-evenly;
 	background-color: var(--green);
 	margin-bottom: 50rem;
@@ -108,7 +137,9 @@ h1 {
 }
 
 .item-value {
+	padding: 10rem 0;
 	font-size: 34rem;
+	font-weight: 600;
 	color: var(--dark-green);
 	background-color: var(--grey);
 	box-shadow:
@@ -123,13 +154,13 @@ h1 {
 }
 
 .item-text {
-	font-size: 24rem;
+	font-size: 28rem;
 	color: var(--grey);
 	font-weight: 600;
 }
 
 #counters-container {
-	padding: 20rem;
+	padding: 50rem;
 	justify-content: space-between;
 	gap: 10rem;
 	background-color: var(--dark-green);
@@ -138,8 +169,11 @@ h1 {
 }
 
 .counter-item {
+	padding: 10rem 0;
 	flex: 0 0 calc((100% - (10rem * 2)) / 3);
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-direction: column-reverse;
 	gap: 5rem;
 	position: relative;
@@ -148,10 +182,10 @@ h1 {
 
 .counter-item::before {
 	content: "";
-	width: 80%;
+	width: 100%;
 	height: 100%;
-	left: 10%;
-	right: 10%;
+	left: 0;
+	right: 0;
 	background-color: rgba(225, 225, 225, 0.4);
 	border-radius: 2rem;
 	position: absolute;
@@ -160,12 +194,12 @@ h1 {
 
 .counter-name {
 	color: var(--grey);
-	font-size: 24rem;
+	font-size: 28rem;
 }
 
 .counter-value {
 	color: var(--pink);
-	font-size: 26rem;
+	font-size: 30rem;
 	font-weight: 700;
 }
 
@@ -204,7 +238,7 @@ h1 {
 
 #weather-container {
 	flex-direction: column;
-	padding: 20rem 0;
+	padding: 50rem 0;
 	background: linear-gradient(131deg, var(--green) 0%, var(--pink) 30%, var(--grey) 60%, var(--green) 100%);
 	box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
 }
@@ -212,13 +246,13 @@ h1 {
 #weather-date {
 	margin-bottom: 10rem;
 	color: var(--dark-green);
-	font-size: 28rem;
+	font-size: 32rem;
 }
 
 #weather-comment {
 	margin-bottom: 10rem;
 	color: var(--dark-green);
-	font-size: 22rem;
+	font-size: 26rem;
 }
 
 #weather-list {
@@ -241,7 +275,7 @@ h1 {
 }
 
 #weather-list li {
-	padding: 5rem;
+	padding: 15rem 5rem 2rem 5rem;
 	color: var(--dark-green);
 	font-size: 24rem;
 	font-weight: 600;

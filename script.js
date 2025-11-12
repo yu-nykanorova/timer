@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function setTemperature() {
         const weather = await getWeather();
         console.log(weather);
-        const date = `Weather for today — ${weather.hourly.time[0].slice(0, 10)}`;
+        const date = `Weather for today (Kyiv) — ${weather.hourly.time[0].slice(0, 10)}`;
 
         dateElem.textContent = date;
 
